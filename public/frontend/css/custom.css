@@ -1,0 +1,237 @@
+body{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    background-color: #f1f1f1;
+}
+.top-nav{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+}
+.top-nav .navbar {
+    padding: 15px 20px;
+}
+
+.banner::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    height: 100vh;
+    clip-path: polygon(0 0, 100% 0, 100% 46%, 0 94%);
+    padding-top: 100px;
+    z-index: -999;
+}
+.banner{
+    margin-top: 126px;
+}
+.banner .text-heading{
+    padding-top: 100px;
+    padding-bottom: 30px;
+}
+.banner .text-heading h1{
+    color: #fff;
+    font-weight: 700;
+    font-size: 60px;
+    line-height: 100%;
+}
+
+.text-left
+{
+    text-align: left;
+}
+
+.login-button{
+    border: none;
+    outline: none;
+    background-color: black;
+    color: white;
+    font-weight: 700;
+    text-transform: uppercase !important;
+    border-radius: 33px !important;
+    padding: 13px 33px;
+}
+
+.login-button:hover
+{
+    color:#fff;
+}
+.home-button{
+    border: none;
+    outline: none;
+    background-color: #586e82;
+    color: #fff;
+    font-weight: 700;
+    border-radius: 33px !important;
+    padding: 16px 0px;
+    width: 200px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.home-section
+{
+    text-align: center;
+    background-color: #586e82;
+    height: auto;
+    margin: 28px 130px 50px;
+    border-radius: 20px;
+}
+
+.password-section
+{
+    background-color: #586e82;
+    height: auto;
+    margin: 28px 130px 50px;
+    border-radius: 20px;
+}
+
+#createForm
+{
+    position: relative;
+    bottom: 64px;
+}
+
+#createForm label
+{
+    color: #fff;
+    font-weight: 800;
+    margin: 15px;
+    font-size: 22px;
+}
+
+#createForm i
+{
+    font-size: 38px;
+    background-color: #2bd67c;
+    color: #fff;
+    border-radius: 50%;
+    padding: 0px 12px;
+    margin-top: 34px;
+}
+
+.password-button
+{
+    background-color: #2bd67c;
+    padding: 12px 40px;
+    margin-top: 20px;
+    border-radius: 25px;
+}
+
+.password-button-text
+{
+    background-color: #fff;
+    padding: 12px 68px;
+    margin-top: 22px;
+    margin-left: 28px;
+    border-radius: 25px;
+}
+
+.logout-button-text
+{
+    background-color: #f1f1f1;
+    padding: 12px 68px;
+    margin-top: 22px;
+    margin-left: 28px;
+    border-radius: 25px;
+    color: black;
+    font-weight: 400;
+    margin-right: 28px;
+}
+
+.button-text-3cf7f7
+{
+    background-color: #3cf7f7;
+    padding: 12px 68px;
+    margin-top: 22px;
+    margin-left: 28px;
+    border-radius: 25px;
+    color: black;
+    font-weight: 600;
+    margin-right: 28px;
+}
+.detail-button-text
+{
+    
+    background-color: #ffde59;
+    padding: 12px 68px;
+    margin-top: -35px;
+    margin-left: 25px;
+    border-radius: 25px;
+    z-index: 1;
+}
+
+.home-button:hover
+{
+    cursor: pointer;
+    color: #fff !important;
+}
+
+.password-section ::placeholder {
+    text-align: center;
+    font-weight: 600;
+  }
+
+.display-flex
+{
+    display: flex;
+}
+
+.justify-content-space-between
+{
+    justify-content: space-between;
+}
+
+.home-content
+{
+    position: absolute;
+    top: 42%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.home-image
+{
+    width:390px;
+    position: relative;
+    top: 68px;
+    z-index: -1;
+}
+.home-logo
+{
+    width:390px;
+}
+
+.learn-more-button
+{
+    border: none;
+    outline: none;
+    background-color: #20a2f3;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase !important;
+    border-radius: 6px !important;
+    padding: 13px 24px;
+}
+.banner-imgg{
+    position: absolute;
+    bottom: 60px;
+    right: 0;
+    width: 900px;
+}
+
+
+.profile-section
+{
+    background-color: #586e82;
+    height: auto;
+    margin: 28px 56px 130px;
+    border-radius: 20px;
+}
+
+
