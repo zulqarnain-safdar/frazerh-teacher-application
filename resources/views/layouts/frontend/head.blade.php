@@ -11,6 +11,10 @@
     <link rel="stylesheet" href="{{ URL::asset('frontend/css/custom.css') }}">
     <link rel="icon" type="image/x-icon" href="{{ URL::asset('frontend/image/favicon.ico') }}">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
+    <meta property="og:title" content="TEACHER4.ME" />
+    <meta property="og:description" content="We Match Students with Online Teachers" />
+    <meta property="og:url" content="https://www.teacher4.me" />
+    <meta property="og:image" content="{{ asset('frontend/image/placeholder.png') }}" />
     <title>Teacher4.me</title>
     <style>
        
