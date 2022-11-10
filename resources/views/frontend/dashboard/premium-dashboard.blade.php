@@ -2,88 +2,128 @@
 <style>
     .premium-button-text {
         background-color: #ffde59;
-        padding: 12px 68px;
         margin-top: 22px;
-        margin-left: 28px;
         border-radius: 25px;
         color: black;
         font-weight: 700;
+        margin-left: 12px;
     }
 
     .white-box {
         background-color: #f9fbfc;
         border-radius: 20px;
         font-weight: 500;
+        height: 175px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
-    .padding-60 {
-        padding: 60px;
-    }
-
-    .padding-72 {
-        padding: 72px;
-    }
+   
 
     a {
         text-decoration: none;
         color: black;
     }
+    .parent-section{
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: -1;
+    }
+    .btn-teacher{
+        background-color: #3cf7f7;
+        margin-top: 22px;
+        border-radius: 25px;
+        color: black;
+        font-weight: 600;
+        margin-top: 130px;
+        margin-bottom: 40px;
+    }
+    .password-style-new{
+        position: relative;
+        z-index: 555;
+        padding-bottom: 85px;
+    }
+    @media (max-width: 576px) {
+        .logout-button-text{
+            display: none !important;
+        }
+        .parent-section{
+            top:14% !important;
+        }
+        .logout-premium-btn
+        {
+            display: block !important;
+        }
+    }
 </style>
 <div class="banner">
-    <section class="password-section">
+    <section class="password-section password-style-new">
         <div class="display-flex justify-content-space-between">
             <div>
-                <a href="javascript::void(0)" class="btn premium-button-text"><b>PREMIUM DASHBOARD</b></a>
+
+                <a href="javascript::void(0)" onclick="event.preventDefault(); this.closest('form').submit();"
+                    class="btn premium-button-text"><b>PREMIUM DASHBOARD</b></a>
+
             </div>
             <div>
-                <a href="javascript::void(0)" class="btn logout-button-text"><b>LOGOUT</b></a>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <a href="javascript::void(0)" onclick="event.preventDefault(); this.closest('form').submit();" class="btn logout-button-text"><b>LOGOUT</b></a>
+                </form>
             </div>
 
         </div>
-        <div class="container-fluid text-center" style="position: relative;
-    bottom: 72px;">
+        <div class="container-fluid text-center" >
             <div class="row">
                 <div class="col-12">
-                    <div class="home-div">
-                        <img src="{{ URL::asset('frontend/image/image1.png') }}" style="width:250px" alt="">
+                    <div class="parent-section">
+                        <img src="{{ URL::asset('frontend/image/image1.png') }}" style="width:150px" alt="">
                     </div>
                 </div>
             </div>
-            <div class="row" style="position: relative;bottom:62px">
+            <div class="row" >
                 <div class="col-lg-6 offset-lg-3">
                     <div class="form-group">
-                        <a href="javascript::void(0)"
-                            class="btn button-text-3cf7f7"><b>/{{ auth()->user()->profile()->first()->profile_name }}</b></a>
+                        <a href="/{{ auth()->user()->profile()->first()->profile_name }}"
+                            class="btn btn-teacher"><b>/{{ auth()->user()->profile()->first()->profile_name
+                                }}</b></a>
                     </div>
                 </div>
             </div>
-            <div class="row" style="margin: 2px 72px;">
-                <div class="col-lg-3">
+            <div class="row">
+                <div class="col-lg-4">
                     <div class="white-box padding-72">
                         <a href="/edit-teacher-profile">Edit My Profile</a>
                     </div>
                 </div>
-                <div class="col-lg-3">
-                    <div class="white-box padding-60">
+                <div class="col-lg-4">
+                    <div class="white-box padding-72">
                         <a href="/reviews">Approve/Decline Reviews</a>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                     <div class="white-box padding-60">
                         <a href="/reset-password">Reset<br>Password</a>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-4 logout-premium-btn">
+                    {{-- <div class="white-box padding-72">
+                        <a href="/">LOGOUT</a>
+                    </div> --}}
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <div class="white-box padding-72">
-                            <a href="javascript::void(0)"
-                                onclick="event.preventDefault(); this.closest('form').submit();">
+                            <a href="javascript::void(0)" onclick="event.preventDefault(); this.closest('form').submit();">
                                 Logout
                             </a>
                         </div>
                     </form>
                 </div>
+
             </div>
         </div>
     </section>

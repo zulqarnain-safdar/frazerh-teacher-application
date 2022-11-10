@@ -1,6 +1,7 @@
 @include('layouts.frontend.head')
 
 <link rel="stylesheet" href="{{ URL::asset('theme-assets/bundles/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
+<link rel="stylesheet" href="{{ URL::asset('theme-assets/bundles/summernote/summernote-bs4.css') }}">
 <link rel="stylesheet" href="{{ URL::asset('theme-assets/bundles/select2/dist/css/select2.min.css') }}">
 
 <style>
@@ -117,6 +118,31 @@
     .invalid-feedback {
         display: block;
     }
+    .btn-submit
+    {
+        padding: 12px 25px;
+        background-color: #0fba34;
+        border-radius: 5px;
+        font-size: 18px;
+        color: #fff;
+        font-weight: 600;
+            
+    }
+
+    .profile-section label
+    {
+        margin-top: 20px;
+    }
+    .profile-section #OpenProfileImgUpload
+    {
+        margin-top: 20px;
+    }
+
+    
+
+
+
+
 </style>
 <div class="banner">
     <section class="profile-section">
@@ -587,6 +613,20 @@
                                     @enderror
                                 </div>
                             </div>
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label for="">Lessons</label>
+                                    <span class="text-white">From Price (include currency simble in
+                                        textbox)</span>
+                                    <input type="number" value="{{ old('lesson_price') }}" name="lesson_price" placeholder="$25"
+                                        class="form-control input-42 border-radius-20" autocomplete="off">
+                                    @error('lesson_price')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-lg-4 border-right-line">
@@ -600,21 +640,7 @@
                                 </div>
 
                             </div>
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label for="">Lessons</label>
-                                    <span class="text-white">From Price (include currency simble in
-                                        textbox)</span>
-                                    <input type="number" value="{{ old('lesson_price') }}" name="lesson_price"
-                                        placeholder="$25" class="form-control input-42 border-radius-20"
-                                        autocomplete="off">
-                                    @error('lesson_price')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
+                            
                             <div class="col-lg-8">
                                 <div class="form-group mb-3">
                                     <label for="">Packages</label>
@@ -637,7 +663,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <input type="number" value="{{ old('trial_price') }}" name="trial_price"
+                                    <input type="text" value="{{ old('trial_price') }}" name="trial_price"
                                         placeholder="$25" class="form-control input-42 border-radius-20"
                                         autocomplete="off">
                                 </div>
@@ -763,10 +789,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row" style="margin-bottom: 30px;">
                     <div class="col-lg-11">
                         <label for="">About you</label>
-                        <textarea name="about_me" id="" autocomplete="off" class="form-control textarea" cols="30"
+                        <textarea name="about_me" id="" autocomplete="off" class="form-control textarea summernote" cols="30"
                             rows="10">{{ old('about_me') }}</textarea>
                         @error('about_me')
                             <span class="invalid-feedback" role="alert">
@@ -774,11 +800,11 @@
                             </span>
                         @enderror
                     </div>
-                    <div class="col-lg-1">
-                        <div style="margin-top:8em">
-                            <button class="btn-submit" type="submit">
-                                <img src="{{ URL::asset('frontend/icons/3.png') }}" height="50" alt="">
-                            </button>
+                    <div class="col-lg-1" style="display: flex;justify-content: center">
+                        <div style="display: flex;flex-direction:column;align-items:center;justify-content: center;">
+                            <center><button class="btn-submit" type="submit">
+                                Submit
+                            </button></center>
                         </div>
                     </div>
                 </div>
@@ -833,6 +859,7 @@
 <script src="{{ URL::asset('theme-assets/bundles/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
 <script src="{{ URL::asset('theme-assets/bundles/select2/dist/js/select2.full.min.js') }}"></script>
 <script src="{{ URL::asset('theme-assets/js/page/forms-advanced-forms.js') }}"></script>
+<script src="{{ URL::asset('theme-assets/bundles/summernote/summernote-bs4.js') }}"></script>
 <script src="{{ URL::asset('theme-assets/js/scripts.js') }}"></script>
 <script src="{{ URL::asset('theme-assets/js/custom.js') }}"></script>
 

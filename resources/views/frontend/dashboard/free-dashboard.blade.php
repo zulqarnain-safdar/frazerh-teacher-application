@@ -4,15 +4,14 @@
         background-color: #f9fbfc;
         border-radius: 20px;
         font-weight: 500;
+        height: 175px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
-    .padding-60 {
-        padding: 60px;
-    }
-
-    .padding-72 {
-        padding: 72px;
-    }
+    
 
     a {
         text-decoration: none;
@@ -33,36 +32,56 @@
         position: relative;
         top: 40px;
     }
+    .parent-section{
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    }
+    .btn-teacher{
+    background-color: #3cf7f7;
+    margin-top: 28px;
+    border-radius: 25px;
+    color: black;
+    font-weight: 600;
+    margin-top: 150px;
+    margin-bottom: 40px;
+    }
+    .password-style-new{
+    position: relative;
+    z-index: 555;
+    padding-bottom: 85px;
+    }
 </style>
 <div class="banner">
-    <section class="password-section">
+    <section class="password-section password-style-new">
         <div class="display-flex justify-content-space-between">
             <div>
-                <a href="javascript::void(0)" class="btn logout-button-text"><b>FREE DASHBOARD</b></a>
+                <a href="javascript::void(0)" class="btn logout-button-text ml-3"><b>FREE DASHBOARD</b></a>
             </div>
-            <div>
-                <a href="javascript::void(0)" class="btn logout-button-text"><b>LOGOUT</b></a>
-            </div>
+            {{-- <div>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <a href="javascript::void(0)" onclick="event.preventDefault(); this.closest('form').submit();"
+                        class="btn logout-button-text"><b>LOGOUT</b></a>
+                </form>
+            </div> --}}
 
         </div>
-        <div class="container-fluid text-center" style="position: relative;
-    bottom: 72px;">
+        <div class="container-fluid text-center" >
             <div class="row">
                 <div class="col-12">
-                    <div class="home-div">
-                        <img src="{{ URL::asset('frontend/image/image1.png') }}" style="width:250px" alt="">
+                    <div class="parent-section">
+                        <img src="{{ URL::asset('frontend/image/image1.png') }}" style="width:150px" alt="">
                     </div>
+                    <a href="/{{ auth()->user()->profile()->first()->profile_name }}" class="btn btn-teacher"><b>/{{
+                            auth()->user()->profile()->first()->profile_name
+                            }}</b></a>
                 </div>
             </div>
-            <div class="row" style="position: relative;bottom:62px">
-                <div class="col-lg-6 offset-lg-3">
-                    <div class="form-group">
-                        <a href="javascript::void(0)"
-                            class="btn button-text-3cf7f7"><b>/{{ auth()->user()->profile()->first()->profile_name }}</b></a>
-                    </div>
-                </div>
-            </div>
-            <div class="row" style="margin: 2px 72px;">
+            
+            <div class="row">
                 <div class="col-lg-4">
                     <div class="white-box padding-72">
                         <a href="/edit-teacher-profile">Edit My Profile</a>
@@ -92,7 +111,6 @@
             <div class="text-center mt-5 upgrade-button">
                 <img src="{{ URL::asset('frontend/icons/4.png') }}" style="width:100px" alt="">
                 <a href="/pricing" class="btn premium-button-text"><b>UPGRADE</b></a>
-
             </div>
         </div>
     </section>

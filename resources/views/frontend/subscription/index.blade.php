@@ -18,20 +18,25 @@
         margin: 15px 16px;
         color: #e35555;
     }
+    @media (max-width: 576px) {
+        .card-body {
+        text-align: center !important;
+        }
+    }
 </style>
 <div class="banner">
     <section class="home-section">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <div class="home-div">
-                        <img src="{{ URL::asset('frontend/image/image1.png') }}" width="320"
-                            style="position: relative;bottom:30px;" alt="">
+                    <div class="home-div mt-4">
+                        <img src="{{ URL::asset('frontend/image/image1.png') }}" width="150"
+                             alt="">
                     </div>
 
                 </div>
             </div>
-            <div class="row" id="createForm">
+            <div class="row" id="createForm" style="margin-top:90px;margin-bottom:50px;">
                 <div class="col-lg-6 offset-lg-3">
                     <div class="card">
                         <form action="{{ route('subscription.create') }}" method="post" id="payment-form"

@@ -1,11 +1,10 @@
 @include('layouts.frontend.head')
 <style>
     .review {
-        position: relative;
-        bottom: 90px;
         background-color: #fff;
         padding: 20px;
         border-radius: 40px;
+        margin-top:20px;
     }
 
     .justify-content-flex-start {
@@ -69,12 +68,12 @@
 
     .badge-success {
         background-color: #28a745;
-        padding: 12px 22px;
+       
     }
 
     .badge-danger {
         background-color: #dc3545;
-        padding: 12px 22px;
+       
     }
 </style>
 <div class="banner">
@@ -86,16 +85,16 @@
     bottom: 22px;">
             <div class="row">
                 <div class="col-12">
-                    <div class="home-div" style="position: relative;bottom:50px">
-                        <img src="{{ URL::asset('frontend/image/image1.png') }}" style="width:250px" alt="">
+                    <div class="home-div" style="margin-top:60px">
+                        <img src="{{ URL::asset('frontend/image/image1.png') }}" style="width:150px" alt="">
                     </div>
 
                 </div>
             </div>
-            <div class="row" style="position: relative;bottom:125px">
+            <div class="row" >
                 <div class="col-lg-6 offset-lg-3">
                     <div class="form-group">
-                        <a href="javascript::void(0)"
+                        <a href="/{{ auth()->user()->profile()->first()->profile_name }}"
                             class="btn button-text-3cf7f7"><b>/{{ auth()->user()->profile()->first()->profile_name }}</b></a>
                     </div>
                 </div>
@@ -106,12 +105,12 @@
                 @endphp
                 @if ($reviews->isNotEmpty())
                     @foreach ($reviews as $review)
-                        <div class="row mb-5">
-                            <div class="col-lg-2">
+                        <div class="row">
+                            <div class="col-lg-2 margin-top-bottom">
                                 <img src="{{ URL::asset('storage/profiles/') }}/{{ $review->image }}"
                                     style="border-radius:50%" height="100" width="100" alt="">
                             </div>
-                            <div class="col-lg-2">
+                            <div class="col-lg-2" >
                                 <div class="text-left mb-2"><a href="javascript::void(0)"
                                         class="btn black-button">{{ $review->name }}</a>
                                 </div>

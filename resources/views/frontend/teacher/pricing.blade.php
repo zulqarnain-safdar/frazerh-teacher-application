@@ -3,8 +3,8 @@
     .pricing-section {
         background-color: #586e82;
         height: auto;
-        margin: 28px 56px;
         border-radius: 20px;
+        margin:20px;
     }
 
     .switch {
@@ -127,7 +127,13 @@
         margin-top: 0px;
         text-align: center;
         color: #fff;
+        font-size: 22px;
         font-weight: 700;
+    }
+
+    .choice-price
+    {
+        font-size: 22px;
     }
 
     .price-header-2bd67c {
@@ -160,22 +166,60 @@
         border-radius: 50%;
         text-decoration: none;
         color: #fff;
+        border:none;
+    }
+    .go-button:hover
+    {
+        color: #fff;
+    }
+    .basic-example
+    {
+        text-align: center;
+        margin-top: -33px !important;
+        margin-bottom: 20px;
+    }
+    .basic-example a
+    {
+        background-color: #596168;
+        padding: 4px 10px;
+        border-radius: 20px;
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+    }
+    .premium-example
+    {
+        text-align: center;
+        margin-top: -33px !important;
+        margin-bottom: 20px;
+    }
+    .premium-example a
+    {
+        background-color: #2bd67c;
+        padding: 4px 10px;
+        border-radius: 20px;
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+    }
+    .width-featured
+    {
+        width: 22px;
     }
 </style>
 <div class="banner">
     <section class="pricing-section">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-6 offset-lg-3">
-                    <div class="row">
+                <div class="col-lg-8 offset-lg-2" style="padding-left: 0px;padding-right:0px;">
+                    <div class="row" >
                         <div class="col-lg-12" style="text-align: center;">
                             <div class="home-div">
                                 <img src="{{ URL::asset('frontend/image/image1.png') }}"
-                                    style="margin-top: -52px;width:310px" alt="">
+                                    style="margin-top: 50px;width:150px" alt="">
                             </div>
                             <div class="form-group"
-                                style="position: relative;
-                            bottom: 50px;text-align:center">
+                                style="margin-bottom:30px;margin-top:30px;">
                                 <span class="montly-toggle text-fff"><b>Montly</b></span>
                                 <label class="switch">
                                     <input type="checkbox" checked>
@@ -184,9 +228,12 @@
                                 <span class="anual-toggle text-2bd67c"><b>Anually</b></span>
                             </div>
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-6" >
 
                             <div class="card">
+                                <div class="basic-example">
+                                    <a href="/Frazerx">See Example</a>
+                                </div>
                                 <div class="price-header" style="padding:42px 20px 46px">0.00 p/m</div>
                                 <div class="display-flex">
                                     <i class="fa fa-check"></i>
@@ -205,7 +252,7 @@
                                     <div class="m-2"> Feature an Intro Video</div>
                                 </div>
                                 <div class="display-flex">
-                                    <i class="fa fa-times" style="width:30px !important"></i>
+                                    <i class="fa fa-times width-featured" ></i>
                                     <div class="m-2"> Be featured in search and ad
                                         campaigns</div>
                                 </div>
@@ -218,18 +265,27 @@
                                     <div class="m-2"> No ADS </div>
                                 </div>
                                 @if (Auth::check())
-                                    <div class="text-center" style="margin-top:12px;">
+                                    {{-- <div class="text-center" style="margin-top:12px;">
                                         <a href="javascript:void(0)">Selected</a>
+                                    </div> --}}
+                                    <div class="text-center mt-3">
+                                        <button type="submit" class="go-button">GO</button>
                                     </div>
                                 @else
-                                    <div class="text-center" style="margin-top:12px;">
+                                    {{-- <div class="text-center" style="margin-top:12px;">
                                         <a href="/get-basic-plan">GET BASIC</a>
+                                    </div> --}}
+                                    <div class="text-center mt-3">
+                                        <a href="/get-basic-plan" class="go-button">GO</a>
                                     </div>
                                 @endif
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="card">
+                                <div class="premium-example">
+                                    <a href="/Frazer">See Example</a>
+                                </div>
                                 <div class="price-header-2bd67c ">
                                     <div class="choice-price">$ 4.50 p/m</div>
                                     <p class="text-black choice">$54 per Year</p>
@@ -237,7 +293,7 @@
 
                                 <div class="display-flex">
                                     <i class="fa fa-check"></i>
-                                    <div class="m-2">Basic Website</div>
+                                    <div class="m-2">Premium Website</div>
                                 </div>
                                 <div class="display-flex">
                                     <i class="fa fa-check"></i>
@@ -252,7 +308,7 @@
                                     <div class="m-2"> Feature an Intro Video</div>
                                 </div>
                                 <div class="display-flex">
-                                    <i class="fa fa-check" style="width:30px;"></i>
+                                    <i class="fa fa-check width-featured"></i>
                                     <div class="m-2"> Be featured in search and ad
                                         campaigns</div>
                                 </div>

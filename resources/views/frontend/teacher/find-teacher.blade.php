@@ -6,11 +6,18 @@
     }
 
     .search-seaction {
-        margin: 62px !important;
+        margin: 62px ;
     }
 
     label {
         font-weight: 900;
+        line-height: 2.6;
+        font-size: 16px;
+    }
+
+    .teacher-profile-image
+    {
+        height: 100px;width: 100%;object-fit: fill;
     }
 
     .fa-check {
@@ -27,8 +34,9 @@
     }
 
     .img-res {
-    width: 100%;
-    height: 350px;
+        width: 100%;
+        height: 350px;
+        object-fit: cover;
     }
 
 
@@ -89,7 +97,8 @@
     .wrap-advertisement {
         padding: 28px;
         text-align: center;
-        background-color: #227fbb;
+        background-color: #8c52ff;
+        ;
         border-radius: 30px;
         margin-top: 38px;
     }
@@ -112,6 +121,12 @@
     .mr-2 {
         margin-right: 2px;
     }
+    .sort-select{
+        display: none;
+    }
+    .sort{
+        display: block;
+    }
 </style>
 <div class="banner">
     <section class="search-seaction">
@@ -127,10 +142,10 @@
                         <select name="subject" id="">
                             <option class="form-control" selected value="All">All</option>
                             @if ($subjects->isNotEmpty())
-                                @foreach ($subjects->flatten()->unique() as $subject)
-                                    <option class="form-control" value="{{ $subject }}">{{ $subject }}
-                                    </option>
-                                @endforeach
+                            @foreach ($subjects->flatten()->unique() as $subject)
+                            <option class="form-control" value="{{ $subject }}">{{ $subject }}
+                            </option>
+                            @endforeach
                             @endif
                         </select>
                     </div>
@@ -405,7 +420,7 @@
                     </div>
                     <div class="col-lg-2">
                         <div class="form-group">
-                            <label for="">Who can speek</label>
+                            <label for="">Who can also speek</label>
                         </div>
                     </div>
                     <div class="col-lg-2">
@@ -485,6 +500,20 @@
                             <option value="Xhosa">Xhosa</option>
                         </select>
                     </div>
+                    <div class="col-lg-2 sort-select">
+                        <div class="form-group">
+                            <label for="">Sort By</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 sort-select">
+                        <select name="sort_by" id="">
+                            <option selected value="all">Sort By</option>
+                            <option value="rating">Teachers Rating</option>
+                            <option value="price">Price</option>
+                            <option value="name">Name</option>
+                            <option value="popularity">Popularity</option>
+                        </select>
+                    </div>
 
                 </div>
             </div>
@@ -495,59 +524,61 @@
             <div class="row">
                 <div class="col-lg-8" id="teacherProfiles">
                     @foreach ($profiles as $profile)
-                        <div class="wrap-box">
-                            <div class="profile-box">
-                                <div class="row">
-                                    <div class="col-lg-2">
-                                        <div class="text-center">
-                                            <img class="mb-2"
-                                                src="{{ URL::asset('storage/profiles/') }}/{{ $profile->profile_image }}"
-                                                style="border-radius:50%" height="100" width="100"
-                                                alt="">
-                                            <span class="rating"><i
-                                                    class="fa fa-star mr-2"></i>{{ number_format((float) $profile->reviews->avg('rating'), 1, '.', '') }}
-                                            </span>
-                                        </div>
+                    <div class="wrap-box">
+                        <div class="profile-box">
+                            <div class="row">
+                                <div class="col-lg-2">
+                                    <div class="text-center">
+                                        <img class="mb-2 teacher-profile-image"
+                                            src="{{ URL::asset('storage/profiles/') }}/{{ $profile->profile_image }}"
+                                            style="border-radius:50%;"
+                                            alt="">
+                                        <span class="rating"><i class="fa fa-star mr-2"></i>{{ number_format((float)
+                                            $profile->reviews->avg('rating'), 1, '.', '') }}
+                                        </span>
                                     </div>
-                                    <div class="col-lg-9">
-                                        <div class="display-flex flex-space-between">
-                                            <div class="display-flex">
-                                                <div>
-                                                    <h3>{{ $profile->teacher_name }}</h3>
-                                                </div>
-                                                <div style="margin-left: 10px">
-                                                    <img src="{{ URL::asset('frontend/icons/6.png') }}" height="23"
-                                                        alt="">
-                                                    <i class="fa fa-check"></i>
-                                                </div>
-                                            </div>
-                                            {{-- <div>
-                                                <i class="fa fa-heart-o"></i>
-                                            </div> --}}
-                                        </div>
-                                        <p>Community Tutor</p>
+                                </div>
+                                <div class="col-lg-9">
+                                    <div class="display-flex flex-space-between">
                                         <div class="display-flex">
-                                            <div class="display-flex">
-                                                <p>Speaks: </p>
-                                                <h5 class="ml-5">{{ implode(', ', $profile->languages) }}</h5>
+                                            <div>
+                                                <h3>{{ $profile->teacher_name }}</h3>
                                             </div>
-                                            <div class="display-flex ml-5">
-                                                <p class="native-text">Native</p>
-                                                <h5 class="ml-5">English</h5>
+                                            @if($profile->user->account_type == 'Paid')
+                                            <div style="margin-left: 10px">
+                                                <img src="{{ URL::asset('frontend/icons/6.png') }}" height="23" alt="">
+
+                                                <i class="fa fa-check"></i>
+
                                             </div>
+                                            @endif
                                         </div>
-                                        <p><b>{{ $profile->about_me }}</b></p>
-                                        <div class="row">
-                                            <div class="col-lg-4"></div>
-                                            <div class="col-lg-8">
-                                                <div class="row">
-                                                    <div class="col-lg-5" style="margin-top:8px">
-                                                        <b>THB {{ $profile->lesson_price }}</b> / Hour
-                                                    </div>
-                                                    <div class="col-lg-7">
-                                                        <a href="/{{ $profile->profile_name }}"
-                                                            class="btn btn-primary">Contact Teacher</a>
-                                                    </div>
+                                        {{-- <div>
+                                            <i class="fa fa-heart-o"></i>
+                                        </div> --}}
+                                    </div>
+                                    <p>Teacher from {{ $profile->nationality }}</p>
+                                    <div class="display-flex">
+                                        <div class="display-flex">
+                                            <p>Speaks: </p>
+                                            <h5 class="ml-5">{{ implode(', ', $profile->languages) }}</h5>
+                                        </div>
+                                        <!--<div class="display-flex ml-5">-->
+                                        <!--    <p class="native-text">Native</p>-->
+                                        <!--    <h5 class="ml-5">English</h5>-->
+                                        <!--</div>-->
+                                    </div>
+                                    <p><b>{{ \Illuminate\Support\Str::limit($profile->about_me,200,"...") }}</b></p>
+                                    <div class="row">
+                                        <div class="col-lg-4"></div>
+                                        <div class="col-lg-8">
+                                            <div class="row price-div" >
+                                                <div class="col-lg-5" style="margin-top:8px">
+                                                    <b>USD {{ $profile->lesson_price }}</b> / Hour
+                                                </div>
+                                                <div class="col-lg-7">
+                                                    <a href="/{{ $profile->profile_name }}"
+                                                        class="btn btn-primary">Contact Teacher</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -555,12 +586,11 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
                     @endforeach
-
-
                 </div>
                 <div class="col-lg-4">
-                    <div class="wrap-select">
+                    <div class="wrap-select sort">
                         <div class="row">
                             <div class="col-lg-3">
                                 <div class="form-group">
@@ -578,30 +608,34 @@
                             </div>
                         </div>
                     </div>
-                    <div class="wrap-button">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <a href="/create-teacher" style="color: black;text-decoration:none;">
-                                    <div>
-                                        <i class="fa fa-plus"></i>
-                                        Add My Teacher Profile
-                                    </div>
+                    <!--<div class="wrap-button">-->
+                    <!--    <div class="row">-->
+                    <!--        <div class="col-lg-12">-->
+                    <!--            <a href="/create-teacher" style="color: black;text-decoration:none;">-->
+                    <!--                <div>-->
+                    <!--                    <i class="fa fa-plus"></i>-->
+                    <!--                    Add My Teacher Profile-->
+                    <!--                </div>-->
 
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                    <!--            </a>-->
+                    <!--        </div>-->
+                    <!--    </div>-->
+                    <!--</div>-->
+                    @if(isset($profile_ads))
                     <div class="wrap-advertisement">
                         <div class="row">
+                            
                             @foreach ($profile_ads as $add)
-                                <div class="add">
-                                    <a href="{{ $add->link }}">
-                                        <img src="{{ URL::asset('storage/ads') }}/{{ $add->image }}" class="img-res" alt="">
-                                    </a>
-                                </div>
+                            <div class="add">
+                                <a href="{{ $add->link }}">
+                                    <img src="{{ URL::asset('storage/ads') }}/{{ $add->image }}" class="img-res" alt="">
+                                </a>
+                            </div>
                             @endforeach
+                           
                         </div>
                     </div>
+                    @endif
                 </div>
             </div>
 

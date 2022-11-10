@@ -1,7 +1,7 @@
 @include('layouts.frontend.head1')
 <style>
     .search-seaction {
-        margin-top: 122px;
+        margin-top: 20px;
     }
 
     .box {
@@ -45,6 +45,7 @@
     .img-fluid {
         width: 100%;
         height: 60vh;
+        object-fit: cover;
     }
 
     p {
@@ -53,6 +54,7 @@
 
     .text-right {
         text-align: right;
+        margin-right:20px;
     }
 
     .fa-star {
@@ -140,6 +142,11 @@
         display: inline-block;
         text-align: left;
         vertical-align: middle;
+    }
+
+    .ml-3
+    {
+        margin-left: 3px;
     }
 
 
@@ -278,6 +285,10 @@
     .rated>label:hover~input:checked~label {
         color: #c59b08;
     }
+    .ml-15
+    {
+    margin-left: 15px;
+    }
 </style>
 <div>
     <section class="search-seaction">
@@ -294,15 +305,15 @@
                                 alt="">
                         @endif
                         <div class="mt-3 display-flex justify-content-space-between">
-                            <div>
-                                <h2><b>{{ $profile->teacher_name }}</b></b></h2>
+                            <div class="display-flex">
+                                <h4><b>{{ $profile->teacher_name }}</b></h4><span class="ml-15 font-10">from {{ $profile->nationality }}</span>
                             </div>
-                            <div class="margin-right-22 mt-2">
+                            <div class="margin-right-22">
                                 <h4>Speaks: {{ implode(', ', $profile->languages) }}</h4>
                             </div>
                         </div>
 
-                        <div class="row mt-5">
+                        <div class="row mt-4">
                             <div class="col-lg-2">
                                 <div class="text-center">
                                     <img src="{{ URL::asset('storage/profiles/') }}/{{ $profile->profile_image }}"
@@ -310,7 +321,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-5">
-                                <h4>{{ $profile->headline }}</h4>
+                                <h5 class="headline"><b>{{ $profile->headline }}</b></h5>
                                 <h5><b>Teaches: {{ implode(', ', $profile->subjects_taught) }}</b></h5>
                                 <ul>
                                     @foreach ($profile->qualifications as $qualification)
@@ -319,7 +330,7 @@
                                 </ul>
                             </div>
                             <div class="col-lg-5">
-                                <div class="text-right margin-right-50">
+                                <div class="text-right">
                                     @if ($profile->reviews->count() > 0)
                                         <div class="mb-2">
                                             <i class="fa fa-star"></i>
@@ -347,7 +358,7 @@
                         </div>
                         <hr>
                         <h2 class="mt-2">About Me</h2>
-                        <p>{{ $profile->about_me }}</p>
+                        <p>{!! $profile->about_me !!}</p>
 
                     </div>
                 </div>
@@ -377,13 +388,13 @@
                                     <h5><b>Trial</b></h5>
                                 </div>
                                 <div>
-                                    <h6><b>From ${{ $profile->trial_price }}</b></h6>
+                                    <h6><b>From {{ $profile->trial_price }}</b></h6>
                                 </div>
                             </div>
                             <div class="package-div">
                                 <a
                                     href="{{ $profile->trial_booking_link != null ? $profile->trial_booking_link : $profile->trial_payment_url }}">Book
-                                    Trial (${{ $profile->trial_price }})</a>
+                                    Trial ({{ $profile->trial_price }})</a>
                             </div>
                         @endif
                         @if (isset($profile->booking_link))
@@ -482,7 +493,10 @@
                                             style="border-radius:50%" height="40" width="40" alt="">
                                     </div>
                                     <div class="ml-5">
-                                        <h6 class="mb-0">{{ $review->name }}</h6>
+                                        <div class="display-flex">
+                                            <h5 class="mb-0">{{ $review->name }}</h5>
+                                            <span class="ml-3">({{ $review->nationality }})</span>
+                                        </div>
                                         <p>{{ $review->review }}</p>
                                     </div>
                                 </div>

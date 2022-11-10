@@ -19,8 +19,8 @@
     bottom: 22px;">
             <div class="row">
                 <div class="col-12">
-                    <div class="home-div" style="position: relative;bottom:50px">
-                        <img src="{{ URL::asset('frontend/image/image1.png') }}" style="width:250px" alt="">
+                    <div class="home-div" style="margin-top:60px;">
+                        <img src="{{ URL::asset('frontend/image/image1.png') }}" style="width:150px" alt="">
                     </div>
 
                 </div>
@@ -28,7 +28,7 @@
             <div class="row" style="position: relative;bottom:125px">
                 <div class="col-lg-6 offset-lg-3">
                     <div class="form-group">
-                        <a href="javascript::void(0)"
+                        <a href="/{{ auth()->user()->profile()->first()->profile_name }}"
                             class="btn button-text-3cf7f7"><b>/{{ auth()->user()->profile()->first()->profile_name }}</b></a>
                     </div>
                 </div>

@@ -1,7 +1,7 @@
 @include('layouts.frontend.head1')
 <style>
     .search-seaction {
-        margin-top: 122px;
+        margin-top: 20px;
     }
 
     .box {
@@ -18,7 +18,7 @@
     }
 
     .add {
-        padding: 58px;
+        padding: 30px;
         background-color: #d9d9d9;
         border-radius: 24px;
         margin-top: 15px;
@@ -47,11 +47,13 @@
     .img-fluid {
         width: 100%;
         height: 60vh;
+        object-fit: cover;
     }
 
     .img-res {
         width: 100%;
         height: 250px;
+        object-fit: cover;
     }
 
     p {
@@ -77,6 +79,10 @@
     .margin-right-22 {
         margin-right: 22px;
     }
+    .ml-15
+    {
+        margin-left: 15px;
+    }
 </style>
 <div>
     <section class="search-seaction">
@@ -88,10 +94,10 @@
                         <img src="{{ URL::asset('storage/covers/') }}/{{ $profile->cover_photo }}" class="img-fluid"
                             alt="">
                         <div class="mt-3 display-flex justify-content-space-between">
-                            <div>
-                                <h2><b>{{ $profile->teacher_name }}</b></b></h2>
+                            <div class="display-flex">
+                                <h4><b>{{ $profile->teacher_name }}</b></h4><span class="ml-15 font-10">from {{ $profile->nationality }}</span>
                             </div>
-                            <div class="margin-right-22 mt-2">
+                            <div class="margin-right-22">
                                 <h4>Speaks: {{ implode(', ', $profile->languages) }}</h4>
                             </div>
                         </div>
@@ -104,7 +110,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-5">
-                                <h4>{{ $profile->headline }}</h4>
+                                <h5 class="headline"><b>{{ $profile->headline }}</b></h5>
                                 <h5><b>Teaches: {{ implode(', ', $profile->subjects_taught) }}</b></h5>
                                 <ul>
                                     @foreach ($profile->qualifications as $qualification)
@@ -129,13 +135,27 @@
                         </div>
                         <hr>
                         <h2 class="mt-2">About Me</h2>
-                        <p>{{ $profile->about_me }}</p>
+                        <p>{!! $profile->about_me !!}</p>
 
                     </div>
                 </div>
                 <div class="col-lg-3">
                     <div class="box1">
                         <div class="row">
+                            <div class="col-lg-12 ">
+                                <div class="mt-20 ml-5">
+                                    <h4>Contact Teacher</h4>
+                                    <div class="display-flex">
+                            
+                                        <div> <img src="{{ URL::asset('frontend/icons/9.png') }}" height="32" alt=""></div>
+                                        <div>
+                                            <p class="email-text">{{ $profile->email }}</p>
+                                        </div>
+                            
+                            
+                                    </div>
+                                </div>
+                            </div>
                             @foreach ($free_ads as $add)
                             <div class="add">
                                 <a href="{{ $add->link }}">
@@ -143,21 +163,7 @@
                                 </a>
                             </div>
                             @endforeach
-                            <div class="col-lg-12 ">
-                                <div class="mt-20 ml-5">
-                                    <h4>Contact Teacher</h4>
-                                    <div class="display-flex">
-
-                                        <div> <img src="{{ URL::asset('frontend/icons/9.png') }}" height="32"
-                                                alt=""></div>
-                                        <div>
-                                            <p class="email-text">{{ $profile->email }}</p>
-                                        </div>
-
-
-                                    </div>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>

@@ -7,8 +7,8 @@
 
     #passwordForm input {
         text-align: center;
-        font-size: 18px !important;
-        font-weight: 600 !important;
+        font-size: 18px ;
+        font-weight: 600;
     }
 </style>
 <div class="banner">

@@ -21,6 +21,51 @@
             color: black;
             font-weight: 600;
         }
+        @media (max-width: 576px) {
+            .button-text-f9fbfc {
+                font-size: 12px;
+            }
+            h4{
+                font-size: 12px;
+            }
+            h5{
+                font-size: 14px;
+            }
+            h2{
+                font-size: 18px;
+            }
+            .box1 {
+                margin-top:20px;
+            }
+            .font-10{
+                font-size:10px;
+            }
+            .text-right
+            {
+                text-align: center !important;
+                margin-right: unset;
+            }
+            p{
+                font-size: 15px;
+            }
+            .headline
+            {
+                margin-top: 20px;
+            }
+            span
+            {
+                font-size: 10px;
+            }
+            .email-text{
+                font-size: 18px !important;
+            }
+            .package-div a {
+            font-size: 14px !important;
+            }
+            .booking-div a {
+            font-size: 14px !important;
+            }
+        }
     </style>
 </head>
 
@@ -29,7 +74,7 @@
         <nav class="navbar navbar-light bg-light" style=" background-color: #fff !important;">
             <div class="container-fluid">
 
-                <div class="navbar-brand" style="display: flex;">
+                <div  style="display: flex;">
                     <div class="button-text-f9fbfc">
                         <img src="{{ URL::asset('frontend/image/logo.png') }}" height="72" alt="">
                         <a><b>Teacher4.me/{{ $profile->profile_name }}</b></a>
